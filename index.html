@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מחשבון // Calculator</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #1e1e1e;
+  font-family: 'Segoe UI', sans-serif;
+}
+.calculator {
+  background: #2c2c2c;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.display {
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 2em;
+  text-align: right;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  min-width: 300px;
+  word-wrap: break-word;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 10px;
+}
+button {
+  padding: 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #444;
+  color: #fff;
+  transition: 0.2s;
+}
+button:hover {
+  background: #555;
+}
+button.operator {
+  background: #f57c00;
+}
+button.operator:hover {
+  background: #ff9800;
+}
+button.equal {
+  background: #4caf50;
+  grid-column: span 2;
+}
+button.equal:hover {
+  background: #66bb6a;
+}
+button.clear {
+  background: #e53935;
+}
+button.clear:hover {
+  background: #ef5350;
+}
+button.delete {
+  background: #9c27b0;
+}
+button.delete:hover {
+  background: #ab47bc;
+}
+</style>
+</head>
+<body>
+<div class="calculator">
+  <div class="display" id="display">0</div>
+  <div class="buttons">
+    <button class="clear" onclick="clearDisplay()">C</button>
+    <button class="delete" onclick="deleteLast()">מחיקה</button>
+    <button onclick="appendValue('%')">%</button>
+    <button onclick="appendValue('√')">√</button>
+    <button class="operator" onclick="appendValue('/')">÷</button>
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button class="operator" onclick="appendValue('*')">×</button>
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button class="operator" onclick="appendValue('-')">-</button>
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button class="operator" onclick="appendValue('+')">+</button>
+    <button onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button class="operator" onclick="appendValue('**')">^</button>
+    <button class="equal" onclick="calculateResult()">=</button>
+  </div>
+</div>
+<script>
+let display = document.getElementById('display');
+let currentInput = '';
+function appendValue(val){
+  if(val==='√'){
+    currentInput += 'Math.sqrt(';
+  } else {
+    currentInput += val;
+  }
+  display.innerText = currentInput.replace(/\*\*/g,'^');
+}
+function clearDisplay(){
+  currentInput = '';
+  display.innerText = '0';
+}
+function deleteLast(){
+  currentInput = currentInput.slice(0, -1);
+  display.innerText = currentInput || '0';
+}
+function calculateResult(){
+  try{
+    let result = eval(currentInput);
+    display.innerText = result;
+    currentInput = result.toString();
+  }catch{
+    display.innerText = 'שגיאה - נסה מחדש';
+    currentInput = '';
+  }
+}
+</script>
+</body>
+</html>
