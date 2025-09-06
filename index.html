@@ -4,76 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מחשבון // Calculator</title>
-<style>
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #1e1e1e;
-  font-family: 'Segoe UI', sans-serif;
-}
-.calculator {
-  background: #2c2c2c;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-.display {
-  background: #1a1a1a;
-  color: #fff;
-  font-size: 2em;
-  text-align: right;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  min-width: 300px;
-  word-wrap: break-word;
-}
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 80px);
-  gap: 10px;
-}
-button {
-  padding: 20px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #444;
-  color: #fff;
-  transition: 0.2s;
-}
-button:hover {
-  background: #555;
-}
-button.operator {
-  background: #f57c00;
-}
-button.operator:hover {
-  background: #ff9800;
-}
-button.equal {
-  background: #4caf50;
-  grid-column: span 2;
-}
-button.equal:hover {
-  background: #66bb6a;
-}
-button.clear {
-  background: #e53935;
-}
-button.clear:hover {
-  background: #ef5350;
-}
-button.delete {
-  background: #9c27b0;
-}
-button.delete:hover {
-  background: #ab47bc;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="calculator">
